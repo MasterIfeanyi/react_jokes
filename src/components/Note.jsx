@@ -17,47 +17,47 @@ const Note = ({ data, fetchData }) => {
 
   return (
     <>
-      <div className="col-md-9 mx-auto">
-        <div className="card text-start p-3">
-          <div className="card-body">
-            <h5 className="card-title fw-bold">Joke</h5>
-            <p className="card-text leads">
-              {data.length <= 25
-                ? data
-                : `${data.slice(0, 25)}...`}
-            </p>
-
-            <div className="d-flex justify-content-between align-items-center my-2">
-              <button
-                className="btn btn-primary"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-                onClick={() => handleShow()}
-              >
-                View details
-              </button>              
-              <button
-                className="btn btn-primary"
-                onClick={() => fetchData() }
-              >
-                Get Joke
-              </button>              
-            </div>
-
-
-            <div className="mx-auto">
+      <div className="col-md-9">
+        <div className="cardStyle">
+          <div className="row">
+            <div className="col-12">
+              <h5 className="fw-bold">Joke</h5>
+              <p className="leads">
+                {data.length <= 25
+                  ? data
+                  : `${data.slice(0, 25)}...`}
+              </p>
+              <div className="d-flex justify-content-between align-items-center my-2">
+                <button
+                  className="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  onClick={() => handleShow()}
+                >
+                  View details
+                </button>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => fetchData()}
+                >
+                  Get another joke
+                </button>
+              </div>
               {chosenEmoji ? (
                 <span>You chose: <h1>{chosenEmoji.emoji}</h1></span>
               ) : (
                 <span>No emoji Chosen</span>
               )}
-              <Picker onEmojiClick={onEmojiClick} />
+              <div className="row">
+                <div className="col-12">
+                  <Picker onEmojiClick={onEmojiClick} />
+                </div>
+              </div>
             </div>
-
-
           </div>
         </div>
       </div>
+      
 
       <Modal dialogClassName="modal-40w" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
